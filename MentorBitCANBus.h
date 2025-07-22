@@ -39,6 +39,12 @@
 
 #include <Wire.h>
 
+#define CONFIRM_BUFFER_BYTES 0x30
+#define SEND_I2C_BUFFER 0x31
+#define CHANGE_CAN_BITRATE 0x45
+#define CHANGE_I2C_ADDRESS 0x49
+#define SEND_BYTES_TO_CAN 0x51
+
 struct can_frame {
     uint32_t can_id;
     uint8_t can_dlc;
