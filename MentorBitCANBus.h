@@ -39,24 +39,29 @@
 #define MentorBitCANBus_h
 
 #include <Wire.h>
-#include <mcp2515.h>
+
+struct can_frame {
+    uint32_t can_id;
+    uint8_t can_dlc;
+    uint8_t data[8];
+}
 
 class MentorBit_CANBus
 {
 
     public:
 
-    MentorBit_CANBus();
-        void begin();
+        MentorBit_CANBus();
+        void begin(uint8_t i2c_addr = 0x05);
         bool configI2CAddress(uint8_t new_i2c_address);
         bool configCANBitrate(uint8_t new_can_bitrate);
         bool available();
-        // Method to received a CAN frame
-        // Method to send a CAN frame
+        bool readMessage(struct can_frame *frame);
+        bool sendMessage(struct can_frame * frame);
 
     private:
 
-        struct can_frame _can_buffer;
+        uint8_t _i2c_address;
 
 }
 
