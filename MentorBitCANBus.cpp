@@ -56,7 +56,15 @@ bool MentorBit_CANBus::configI2CAddress(uint8_t new_i2c_address) {
 
 }
 
-bool MentorBit_CANBus::configCANBitrate(uint8_t new_can_bitrate) {}
+bool MentorBit_CANBus::configCANBitrate(uint8_t new_can_bitrate) {
+
+    Wire.beginTransmission();
+    Wire.write(CHANGE_CAN_BITRATE);
+    Wire.write(new_can_bitrate);
+    return Wire.endTransmission();
+
+}
+
 bool MentorBit_CANBus::available() {}
 bool MentorBit_CANBus::readMessage(struct can_frame *frame){}
 bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {}
