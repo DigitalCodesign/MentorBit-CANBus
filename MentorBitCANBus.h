@@ -45,6 +45,10 @@
 #define CHANGE_I2C_ADDRESS 0x49
 #define SEND_BYTES_TO_CAN 0x51
 
+#define I2C_BYTES_HEADER 0x60
+#define I2C_NO_BYTES_HEADER 0x77
+#define CAN_ERROR_HEADER 0x78
+
 struct can_frame {
     uint32_t can_id;
     uint8_t can_dlc;

@@ -65,6 +65,18 @@ bool MentorBit_CANBus::configCANBitrate(uint8_t new_can_bitrate) {
 
 }
 
-bool MentorBit_CANBus::available() {}
+bool MentorBit_CANBus::available() {
+
+    Wire.beginTransmission();
+    Wire.write(CONFIRM_BUFFER_BYTES);
+    if(Wire.endTransmission() != 0) return false;
+    uint8_t received_bytes = Wire.requestFrom(_i2c_address, 2);
+    if(received_bytes < 2) return false;
+    uint8_t available_flag = Wire.read();
+    if(available_flag != I2C_BYTES_HEADER) return false;
+    return true;
+
+}
+
 bool MentorBit_CANBus::readMessage(struct can_frame *frame){}
 bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {}
