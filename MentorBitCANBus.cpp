@@ -36,7 +36,10 @@
 
 #include <MentorBitCANBus.h>
 
-MentorBit_CANBus::MentorBit_CANBus() {}
+MentorBit_CANBus::MentorBit_CANBus() {
+
+}
+
 void MentorBit_CANBus::begin(uint8_t i2c_addr = 0x05) {}
 bool MentorBit_CANBus::configI2CAddress(uint8_t new_i2c_address) {}
 bool MentorBit_CANBus::configCANBitrate(uint8_t new_can_bitrate) {}
