@@ -95,4 +95,16 @@ bool MentorBit_CANBus::readMessage(struct can_frame *frame){
 
 }
 
-bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {}
+bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {
+
+    Wire.beginTransmission();
+    Wire.write(SEND_BYTES_TO_CAN);
+    Wire.write(frame.can_id >> 8);
+    Wire.write(frame.can_id & 0xFF);
+    Wire.write(frame.can_dlc);
+    for(uint8_t i = 0 ; i < frame.can_dlc ; i++)
+        Wire.write(frame.data[i]);
+    if(Wire.endTransmission() != 0) return false;
+    return true;
+
+}
