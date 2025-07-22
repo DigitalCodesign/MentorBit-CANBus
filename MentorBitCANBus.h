@@ -71,6 +71,7 @@ class MentorBit_CANBus
     private:
 
         uint8_t _i2c_address;
+        uint8_t _frame_length;
 
 }
 

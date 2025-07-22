@@ -43,6 +43,7 @@ MentorBit_CANBus::MentorBit_CANBus() {
 void MentorBit_CANBus::begin(uint8_t i2c_addr = 0x05) {
 
     _i2c_address = i2c_addr;
+    _frame_length = 0;
     Wire.begin(_i2c_address);
 
 }
@@ -73,11 +74,25 @@ bool MentorBit_CANBus::available() {
     uint8_t received_bytes = Wire.requestFrom(_i2c_address, 2);
     if(received_bytes < 2) return false;
     uint8_t available_flag = Wire.read();
-    Wire.read();
+    _frame_length = Wire.read();
     if(available_flag != I2C_BYTES_HEADER) return false;
     return true;
 
 }
 
-bool MentorBit_CANBus::readMessage(struct can_frame *frame){}
+bool MentorBit_CANBus::readMessage(struct can_frame *frame){
+
+    Wire.beginTransmission();
+    Wire.write(SEND_I2C_BUFFER);
+    if(Wire.endTransmission() != 0) return false;
+    uint8_t received_bytes = Wire.requestFrom(_i2c_address, _frame_length);
+    if(received_bytes < _frame_length) return false;
+    frame.can_id = (Wire.read() << 8) | Wire.read();
+    frame.can_dlc = Wire.read();
+    for(uint8_t i = 0 ; i < _frame_length ; i++)
+        frame.data[i] = Wire.read();
+    return true;
+
+}
+
 bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {}
