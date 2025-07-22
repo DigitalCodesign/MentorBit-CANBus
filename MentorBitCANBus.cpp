@@ -73,6 +73,7 @@ bool MentorBit_CANBus::available() {
     uint8_t received_bytes = Wire.requestFrom(_i2c_address, 2);
     if(received_bytes < 2) return false;
     uint8_t available_flag = Wire.read();
+    Wire.read();
     if(available_flag != I2C_BYTES_HEADER) return false;
     return true;
 
