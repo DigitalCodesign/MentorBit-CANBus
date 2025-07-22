@@ -26,12 +26,11 @@
     Metodos principales:
         MentorBitCANBus -> constructor de la clase
         begin -> inicializador, debe colocarse en el setup
-
-    TODO: CONFIRM_BUFFER_BYTES
-    TODO: SEND_I2C_BUFFER
-    TODO: CHANGE_CAN_BITRATE
-    TODO: CHANGE_I2C_ADDRESS
-    TODO: SEND_BYTES_TO_CAN
+        configI2CAddress -> configura la dirección I2C del módulo
+        configCANBitrate -> configura el bitrate para las comunicaciones CAN del módulo
+        available -> comprueba si hay un nuevo mensaje CAN recibido
+        readMessage -> lee un mensaje CAN del buffer
+        sendMessage -> envía un mensaje CAN al bus
 
 */
 
