@@ -71,7 +71,7 @@ bool MentorBit_CANBus::available() {
     Wire.beginTransmission();
     Wire.write(CONFIRM_BUFFER_BYTES);
     if(Wire.endTransmission() != 0) return false;
-    uint8_t received_bytes = Wire.requestFrom(_i2c_address, 2);
+    uint8_t received_bytes = Wire.requestFrom(_i2c_address, (uint8_t)2);
     if(received_bytes < 2) return false;
     uint8_t available_flag = Wire.read();
     _frame_length = Wire.read();
@@ -87,10 +87,10 @@ bool MentorBit_CANBus::readMessage(struct can_frame *frame){
     if(Wire.endTransmission() != 0) return false;
     uint8_t received_bytes = Wire.requestFrom(_i2c_address, _frame_length);
     if(received_bytes < _frame_length) return false;
-    frame.can_id = (Wire.read() << 8) | Wire.read();
-    frame.can_dlc = Wire.read();
+    frame->can_id = (Wire.read() << 8) | Wire.read();
+    frame->can_dlc = Wire.read();
     for(uint8_t i = 0 ; i < _frame_length ; i++)
-        frame.data[i] = Wire.read();
+        frame->data[i] = Wire.read();
     return true;
 
 }
@@ -99,11 +99,11 @@ bool MentorBit_CANBus::sendMessage(struct can_frame * frame) {
 
     Wire.beginTransmission();
     Wire.write(SEND_BYTES_TO_CAN);
-    Wire.write(frame.can_id >> 8);
-    Wire.write(frame.can_id & 0xFF);
-    Wire.write(frame.can_dlc);
-    for(uint8_t i = 0 ; i < frame.can_dlc ; i++)
-        Wire.write(frame.data[i]);
+    Wire.write(frame->can_id >> 8);
+    Wire.write(frame->can_id & 0xFF);
+    Wire.write(frame->can_dlc);
+    for(uint8_t i = 0 ; i < frame->can_dlc ; i++)
+        Wire.write(frame->data[i]);
     if(Wire.endTransmission() != 0) return false;
     return true;
 

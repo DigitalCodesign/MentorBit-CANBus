@@ -53,7 +53,7 @@ struct can_frame {
     uint32_t can_id;
     uint8_t can_dlc;
     uint8_t data[8];
-}
+};
 
 class MentorBit_CANBus
 {
@@ -73,6 +73,6 @@ class MentorBit_CANBus
         uint8_t _i2c_address;
         uint8_t _frame_length;
 
-}
+};
 
 #endif
