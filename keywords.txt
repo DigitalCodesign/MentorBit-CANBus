@@ -1,0 +1,7 @@
+MentorBit_CANBus KEYWORD1
+begin KEYWORD2
+configI2CAddress KEYWORD2
+configCANBitrate KEYWORD2
+available KEYWORD2
+readMessage KEYWORD2
+sendMessage KEYWORD2
