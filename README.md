@@ -131,5 +131,6 @@ void loop() {
 - [Web Oficial de MentorBit](https://digitalcodesign.com/mentorbit)
 - [Web Oficial del Módulo CAN Bus]()
 - [Manual de usuario del Módulo]()
-- [Modelo 3D del Módulo CAN Bus en formato .STEP]()
+- [Modelo 3D del Módulo CAN Bus en formato .STEP](https://drive.google.com/file/d/1RtH_D9KUnAoHc53t61vEueKS1VkrsDjF/view?usp=drive_link)
+
 
