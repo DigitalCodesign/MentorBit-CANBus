@@ -129,9 +129,10 @@ void loop() {
 - [Tienda Online de Canarias](https://canarias.digitalcodesign.com/shop)
 - [Tienda Online de Península](https://digitalcodesign.com/shop)
 - [Web Oficial de MentorBit](https://digitalcodesign.com/mentorbit)
-- [Web Oficial del Módulo CAN Bus]()
+- [Web Oficial del Módulo CAN Bus](https://canarias.digitalcodesign.com/shop/00040021-mentorbit-modulo-can-bus-8724#attr=)
 - [Manual de usuario del Módulo](https://drive.google.com/file/d/1vxZdAPIgVl6biilxv_bS9gNY2v4KCrDz/view?usp=drive_link)
 - [Modelo 3D del Módulo CAN Bus en formato .STEP](https://drive.google.com/file/d/1RtH_D9KUnAoHc53t61vEueKS1VkrsDjF/view?usp=drive_link)
+
 
 
 
